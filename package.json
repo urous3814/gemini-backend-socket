@@ -1,0 +1,20 @@
+{
+  "name": "my-backend-server",
+  "version": "1.0.0",
+  "description": "A WebSocket server that receives prompts and logs streamed responses from the Gemini Proxy Client.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "websocket",
+    "gemini",
+    "proxy"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.17.0"
+  }
+}
