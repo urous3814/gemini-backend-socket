@@ -1,9 +1,19 @@
 // server.js
+
 import { WebSocketServer } from 'ws';
+import https from 'https';
+import fs from 'fs';
 
-const wss = new WebSocketServer({ port: 8080 });
+const server = https.createServer({
+  cert: fs.readFileSync('/etc/letsencrypt/live/geminiproxy.n-e.kr/fullchain.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/geminiproxy.n-e.kr/privkey.pem')
+});
 
-console.log('✅ WebSocket server started on ws://localhost:8080');
+const wss = new WebSocketServer({ server });
+
+server.listen(8080, () => {
+  console.log('✅ WebSocket server started on wss://geminiproxy.n-e.kr:8080');
+});
 
 wss.on('connection', ws => {
   console.log('✅ Client connected');
